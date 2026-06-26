@@ -16,11 +16,11 @@ from tkinter import filedialog, scrolledtext, messagebox, simpledialog, ttk
 # PERSISTENT STORAGE (Safe Base64 Encoding)
 # ============================================================================
 # NEON_HISTORY_START
-NEON_HISTORY_B64 = 'eyJjaGF0cyI6IHsiMSI6IHsibmFtZSI6ICJOZXcgU2Vzc2lvbiIsICJ0aW1lIjogIjIwMjYtMDYtMjVUMjA6Mzk6MDEuODg0MTE5In19LCAibWVzc2FnZXMiOiB7IjEiOiBbeyJyb2xlIjogInVzZXIiLCAidGV4dCI6ICJiYW5hbmEifSwgeyJyb2xlIjogImJvdCIsICJ0ZXh0IjogIlx1ZDgzZFx1ZGNhMSAqKkVuY3ljbG9wZWRpYToqKlxuQSBiYW5hbmEgaXMgYW4gZWxvbmdhdGVkLCBlZGlibGUgZnJ1aXQgdGhhdCBpcyBib3RhbmljYWxseSBhIGJlcnJ5IHByb2R1Y2VkIGJ5IHNldmVyYWwga2luZHMgb2YgbGFyZ2UgdHJlZWxpa2UgaGVyYmFjZW91cyBmbG93ZXJpbmcgcGxhbnRzIGluIHRoZSBnZW51cyBNdXNhLiBJbiBzb21lIGNvdW50cmllcywgY29va2luZyBiYW5hbmFzIGFyZSBjYWxsZWQgcGxhbnRhaW5zLCBkaXN0aW5ndWlzaGluZyB0aGVtIGZyb20gZGVzc2VydCBiYW5hbmFzLiBUaGUgZnJ1aXQgaXMgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWV0eSBvZiBjb2xvcnMgd2hlbiByaXBlLiBJdCBncm93cyB1cHdhcmQgaW4gY2x1c3RlcnMgbmVhciB0aGUgdG9wIG9mIHRoZSBwbGFudC4gQWxtb3N0IGFsbCBtb2Rlcm4gZWRpYmxlIHNlZWRsZXNzIChwYXJ0aGVub2NhcnApIGN1bHRpdmF0ZWQgYmFuYW5hcyBjb21lIGZyb20gdHdvIHdpbGQgc3BlY2llcyBcdTIwMTMgTXVzYSBhY3VtaW5hdGEgYW5kIE11c2EgYmFsYmlzaWFuYSwgb3IgdGhlaXIgaHlicmlkcy4ifV19LCAibmV4dF9pZCI6IDJ9'
+NEON_HISTORY_B64 = 'eyJjaGF0cyI6IHsiMSI6IHsibmFtZSI6ICJOZXcgU2Vzc2lvbiIsICJ0aW1lIjogIjIwMjYtMDYtMjZUMTg6MjQ6MDYuODk5MjQ1In19LCAibWVzc2FnZXMiOiB7IjEiOiBbeyJyb2xlIjogInVzZXIiLCAidGV4dCI6ICJiYW5hbmEifSwgeyJyb2xlIjogImJvdCIsICJ0ZXh0IjogIlx1ZDgzZFx1ZGNhMSAqKkVuY3ljbG9wZWRpYToqKlxuQSBiYW5hbmEgaXMgYW4gZWxvbmdhdGVkLCBlZGlibGUgZnJ1aXQgdGhhdCBpcyBib3RhbmljYWxseSBhIGJlcnJ5IHByb2R1Y2VkIGJ5IHNldmVyYWwga2luZHMgb2YgbGFyZ2UgdHJlZWxpa2UgaGVyYmFjZW91cyBmbG93ZXJpbmcgcGxhbnRzIGluIHRoZSBnZW51cyBNdXNhLiBJbiBzb21lIGNvdW50cmllcywgY29va2luZyBiYW5hbmFzIGFyZSBjYWxsZWQgcGxhbnRhaW5zLCBkaXN0aW5ndWlzaGluZyB0aGVtIGZyb20gZGVzc2VydCBiYW5hbmFzLiBUaGUgZnJ1aXQgaXMgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLiJ9XX0sICJuZXh0X2lkIjogMn0='
 # NEON_HISTORY_END
 
 # NEON_SETTINGS_START
-NEON_SETTINGS_B64 = 'eyJ0aGVtZSI6ICJOZW9uIFBpbmsiLCAiaW50ZWxsaWdlbmNlIjogIkJhbGFuY2VkIiwgInJlc3BvbnNlX3N0eWxlIjogIkJhbGFuY2VkIiwgInNwZWVkIjogIk5vcm1hbCIsICJyZXN1bHRfY291bnQiOiA1LCAiZm9udF9zaXplIjogMTIsICJ3ZWJfc2VhcmNoIjogdHJ1ZSwgIndpa2lwZWRpYSI6IHRydWUsICJsaXZlX3NlYXJjaCI6IHRydWUsICJnaXRodWJfc2VhcmNoIjogZmFsc2UsICJyZWRkaXRfc2VhcmNoIjogZmFsc2UsICJuZXdzX3NlYXJjaCI6IGZhbHNlLCAiYWRfZmlsdGVyIjogdHJ1ZSwgInNhdmVfbWVtb3J5IjogdHJ1ZSwgInNhdmVfbG9jYWxseSI6IGZhbHNlLCAic2F2ZV9wYXRoIjogIiJ9'
+NEON_SETTINGS_B64 = 'eyJ0aGVtZSI6ICJTb2Z0IE5pZ2h0IChCbHVlKSIsICJpbnRlbGxpZ2VuY2UiOiAiQmFsYW5jZWQiLCAicmVzcG9uc2Vfc3R5bGUiOiAiQmFsYW5jZWQiLCAic3BlZWQiOiAiTm9ybWFsIiwgInJlc3VsdF9jb3VudCI6IDUsICJmb250X3NpemUiOiAxMiwgIndlYl9zZWFyY2giOiB0cnVlLCAid2lraXBlZGlhIjogdHJ1ZSwgImxpdmVfc2VhcmNoIjogdHJ1ZSwgImdpdGh1Yl9zZWFyY2giOiBmYWxzZSwgInJlZGRpdF9zZWFyY2giOiBmYWxzZSwgIm5ld3Nfc2VhcmNoIjogZmFsc2UsICJhZF9maWx0ZXIiOiB0cnVlLCAic2F2ZV9tZW1vcnkiOiB0cnVlLCAic2F2ZV9sb2NhbGx5IjogZmFsc2UsICJzYXZlX3BhdGgiOiAiIn0='
 # NEON_SETTINGS_END
 
 def _decode_store(b64_str):
@@ -38,14 +38,16 @@ except ImportError:
     HAS_PIL = False
 
 # ============================================================================
-# THINKING BRAIN: N30N C0RE AI
+# THINKING BRAIN: N30N C0R3 AI
 # ============================================================================
 
 class ThinkingBrain:
+    """Dynamic brain that can balance context from none to high depending on query."""
     def __init__(self, settings=None):
         self.user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
         self.blacklist = ["ebay", "amazon", "aliexpress", "walmart", "target", "etsy", "wish", "temu", "alibaba"]
         self.ad_triggers = ["price", "shipping", "buy now", "discount", "sale", "stock", "cart", "$", "€", "£"]
+        self.last_subject = ""
         self.settings = settings or {}
 
     def update_settings(self, settings): self.settings = settings
@@ -66,14 +68,30 @@ class ThinkingBrain:
         
         # Identity Check
         if any(k in q_low for k in ["who are you", "your name"]):
-            return "I am N30N C0RE AI, your advanced local intelligence hub."
+            return "I am N30N C0R3 AI, your advanced local intelligence hub."
 
         if any(q_low == g or q_low.startswith(g+" ") for g in ["hi", "hello", "hey", "yo", "sup"]):
-            return "N30N C0RE AI active. Dynamic research mode initialized."
+            return "N30N C0R3 AI active. Dynamic research mode initialized."
             
         if q_low in ["time", "date", "today"]:
             return f"Synchronized Time: {datetime.datetime.now().strftime('%I:%M %p, %A, %B %d, %Y')}."
         
+        # SMART CONTEXT BALANCING
+        search_query = query
+        pronouns = {"it", "that", "this", "he", "she", "they", "them", "these", "those", "his", "her", "its", "their", "him", "hers"}
+        q_words = re.findall(r'\b\w+\b', q_low)
+        
+        # Only use context for single-word queries or when pronouns are explicitly used.
+        needs_context = len(q_words) < 2 or any(w in pronouns for w in q_words)
+        
+        if needs_context and self.last_subject:
+            search_query = f"{self.last_subject} {query}"
+        
+        clean_subject = re.sub(r'\b(what|who|is|are|a|an|the|tell|me|about|define|search|for)\b', '', q_low).strip()
+        if clean_subject and not any(w in pronouns for w in q_words):
+            self.last_subject = clean_subject
+
+        # Safe Math
         if re.search(r'[\d\+\-\*\/\(\)\^]', query) and any(c in query for c in "+-*/^%"):
             try:
                 expr = query.replace("^", "**")
@@ -82,24 +100,27 @@ class ThinkingBrain:
             except: pass
 
         results = []
-        encoded = urllib.parse.quote(query)
+        wiki_search_term = re.sub(r'\b(what|who|is|are|a|an|the|tell|me|about|define|where|was|were|search|for)\b', '', search_query.lower()).strip()
+        
+        encoded_web = urllib.parse.quote(search_query)
+        encoded_wiki = urllib.parse.quote(wiki_search_term.replace(' ', '_'))
         
         if self.settings.get("live_search") and any(k in q_low for k in ["closing", "opening", "hours", "open", "close"]):
             try:
-                html_hours = self._fetch(f"https://www.google.com/search?q={encoded}+hours")
+                html_hours = self._fetch(f"https://www.google.com/search?q={encoded_web}+hours")
                 times = re.findall(r'\d{1,2}:\d{2}\s?[apAP][mM]', html_hours)
                 if times: results.append(("Live Hours", f"Found these times: {', '.join(set(times))}. (Verify with Google Maps)."))
             except: pass
 
         if self.settings.get("wikipedia", True):
             try:
-                wiki_sum = json.loads(self._fetch(f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(query.replace(' ', '_'))}"))
+                wiki_sum = json.loads(self._fetch(f"https://en.wikipedia.org/api/rest_v1/page/summary/{encoded_wiki}"))
                 if wiki_sum.get("extract"): results.append(("Encyclopedia", wiki_sum["extract"]))
             except: pass
 
         if self.settings.get("web_search", True):
             try:
-                html_data = self._fetch(f"https://html.duckduckgo.com/html/?q={encoded}")
+                html_data = self._fetch(f"https://html.duckduckgo.com/html/?q={encoded_web}")
                 blocks = re.findall(r'<div class="result__body">(.*?)</div>\s*</div>', html_data, re.DOTALL)
                 web_intel = []
                 for block in blocks:
@@ -193,11 +214,12 @@ class NeonUI:
         "Neon Green": {"bg": "#000000", "panel": "#030803", "field": "#061206", "accent": "#39FF14", "bot": "#00FFCC", "text": "#E8FFE8", "muted": "#1A4D1A"},
         "Neon Blue": {"bg": "#000000", "panel": "#00050f", "field": "#000c1f", "accent": "#00BFFF", "bot": "#00FFFF", "text": "#E0F7FF", "muted": "#003366"},
         "Neon Red": {"bg": "#000000", "panel": "#0f0000", "field": "#1f0000", "accent": "#FF003F", "bot": "#FF6600", "text": "#FFE0E0", "muted": "#660000"},
-        "Comfortable": {"bg": "#1a1a1a", "panel": "#242424", "field": "#2e2e2e", "accent": "#ffb042", "bot": "#8fa3a3", "text": "#e3e3e3", "muted": "#757575"}
-            }
+        "Soft Night (Green)": {"bg": "#121212", "panel": "#1E1E1E", "field": "#252525", "accent": "#81C784", "bot": "#64B5F6", "text": "#E0E0E0", "muted": "#424242"},
+        "Soft Night (Blue)": {"bg": "#0D1117", "panel": "#161B22", "field": "#21262D", "accent": "#58A6FF", "bot": "#A5D6FF", "text": "#C9D1D9", "muted": "#484F58"}
+    }
 
     def __init__(self, root):
-        self.root = root; self.root.title("N30N C0RE AI"); self.root.geometry("1100x900")
+        self.root = root; self.root.title("N30N C0R3 AI"); self.root.geometry("1100x900")
         self.settings_store = SettingsStore(); self.settings = self.settings_store.data
         self.memory = MemoryDatabase(self.settings); self.chat_id = self.memory.get_or_create_chat()
         self.brain = ThinkingBrain(self.settings); self.img_cache = []
@@ -205,7 +227,7 @@ class NeonUI:
 
     def _build_layout(self):
         self.header = tk.Frame(self.root, height=60); self.header.pack(side=tk.TOP, fill=tk.X)
-        self.logo = tk.Label(self.header, text="N30N C0RE AI", font=("Consolas", 16, "bold")); self.logo.pack(side=tk.LEFT, padx=30)
+        self.logo = tk.Label(self.header, text="N30N C0R3 AI", font=("Consolas", 16, "bold")); self.logo.pack(side=tk.LEFT, padx=30)
         self.paned = tk.PanedWindow(self.root, orient=tk.HORIZONTAL, bd=0, sashwidth=2); self.paned.pack(fill=tk.BOTH, expand=True)
         self.side = tk.Frame(self.paned, width=220); self.side.pack_propagate(False); self.paned.add(self.side)
         self.side_label = tk.Label(self.side, text="SESSIONS", font=("Consolas", 11, "bold")); self.side_label.pack(pady=20)
@@ -227,7 +249,7 @@ class NeonUI:
         theme_name = self.settings.get("theme", "Neon Orange")
         theme = self.themes.get(theme_name, self.themes["Neon Orange"])
         self.root.configure(bg=theme["bg"]); self.paned.configure(bg=theme["bg"]); self.header.configure(bg=theme["panel"]); self.logo.configure(bg=theme["panel"], fg=theme["accent"])
-        self.side.configure(bg=theme["panel"]); self.side_label.configure(bg=theme["panel"], fg=theme["accent"]); self.chat_list.configure(bg=theme["panel"], fg=theme["muted"], selectbackground=theme["field"])
+        self.side.configure(bg=theme["panel"]); self.side_label.configure(bg=theme["panel"], fg=theme["accent"]); self.chat_list.configure(bg=theme["panel"], fg=theme["text"], selectbackground=theme["field"])
         self.btn_f.configure(bg=theme["panel"])
         for b in [self.b_new, self.b_set, self.b_clr, self.b_file, self.b_send]: b.configure(bg=theme["field"], fg=theme["accent"], activebackground=theme["panel"], activeforeground=theme["accent"])
         self.chat_main.configure(bg=theme["bg"]); self.display.configure(bg=theme["bg"], fg=theme["text"], font=("Consolas", int(self.settings.get("font_size", 12))), insertbackground=theme["accent"])
