@@ -16,11 +16,11 @@ from tkinter import filedialog, scrolledtext, messagebox, simpledialog, ttk
 # PERSISTENT STORAGE (Safe Base64 Encoding)
 # ============================================================================
 # NEON_HISTORY_START
-NEON_HISTORY_B64 = 'eyJjaGF0cyI6IHsiMSI6IHsibmFtZSI6ICJOZXcgU2Vzc2lvbiIsICJ0aW1lIjogIjIwMjYtMDYtMjZUMTg6MjQ6MDYuODk5MjQ1In19LCAibWVzc2FnZXMiOiB7IjEiOiBbeyJyb2xlIjogInVzZXIiLCAidGV4dCI6ICJiYW5hbmEifSwgeyJyb2xlIjogImJvdCIsICJ0ZXh0IjogIlx1ZDgzZFx1ZGNhMSAqKkVuY3ljbG9wZWRpYToqKlxuQSBiYW5hbmEgaXMgYW4gZWxvbmdhdGVkLCBlZGlibGUgZnJ1aXQgdGhhdCBpcyBib3RhbmljYWxseSBhIGJlcnJ5IHByb2R1Y2VkIGJ5IHNldmVyYWwga2luZHMgb2YgbGFyZ2UgdHJlZWxpa2UgaGVyYmFjZW91cyBmbG93ZXJpbmcgcGxhbnRzIGluIHRoZSBnZW51cyBNdXNhLiBJbiBzb21lIGNvdW50cmllcywgY29va2luZyBiYW5hbmFzIGFyZSBjYWxsZWQgcGxhbnRhaW5zLCBkaXN0aW5ndWlzaGluZyB0aGVtIGZyb20gZGVzc2VydCBiYW5hbmFzLiBUaGUgZnJ1aXQgaXMgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLCBidXQgaXMgdXN1YWxseSBlbG9uZ2F0ZWQgYW5kIGN1cnZlZCwgd2l0aCBzb2Z0IGZsZXNoIHJpY2ggaW4gc3RhcmNoIGNvdmVyZWQgd2l0aCBhIHBlZWwsIHdoaWNoIG1heSBoYXZlIGEgdmFyaWFibGUgaW4gc2l6ZSwgY29sb3IgYW5kIGZpcm1uZXNzLiJ9XX0sICJuZXh0X2lkIjogMn0='
+NEON_HISTORY_B64 = 'eyJjaGF0cyI6IHsiMSI6IHsibmFtZSI6ICJOZXcgU2Vzc2lvbiIsICJ0aW1lIjogIjIwMjYtMDYtMjdUMTI6MTU6MTYuNTMxOTIwIn19LCAibWVzc2FnZXMiOiB7IjEiOiBbeyJyb2xlIjogInVzZXIiLCAidGV4dCI6ICJoaSJ9LCB7InJvbGUiOiAiYm90IiwgInRleHQiOiAiTjMwTiBDMFIzIEFJIE9OTElORS4ifV19LCAibmV4dF9pZCI6IDJ9'
 # NEON_HISTORY_END
 
 # NEON_SETTINGS_START
-NEON_SETTINGS_B64 = 'eyJ0aGVtZSI6ICJTb2Z0IE5pZ2h0IChCbHVlKSIsICJpbnRlbGxpZ2VuY2UiOiAiQmFsYW5jZWQiLCAicmVzcG9uc2Vfc3R5bGUiOiAiQmFsYW5jZWQiLCAic3BlZWQiOiAiTm9ybWFsIiwgInJlc3VsdF9jb3VudCI6IDUsICJmb250X3NpemUiOiAxMiwgIndlYl9zZWFyY2giOiB0cnVlLCAid2lraXBlZGlhIjogdHJ1ZSwgImxpdmVfc2VhcmNoIjogdHJ1ZSwgImdpdGh1Yl9zZWFyY2giOiBmYWxzZSwgInJlZGRpdF9zZWFyY2giOiBmYWxzZSwgIm5ld3Nfc2VhcmNoIjogZmFsc2UsICJhZF9maWx0ZXIiOiB0cnVlLCAic2F2ZV9tZW1vcnkiOiB0cnVlLCAic2F2ZV9sb2NhbGx5IjogZmFsc2UsICJzYXZlX3BhdGgiOiAiIn0='
+NEON_SETTINGS_B64 = 'eyJ0aGVtZSI6ICJTb2Z0IE5pZ2h0IChHcmVlbikiLCAiaW50ZWxsaWdlbmNlIjogIkRlZXAiLCAicmVzcG9uc2Vfc3R5bGUiOiAiRGV0YWlsZWQiLCAic3BlZWQiOiAiTm9ybWFsIiwgInJlc3VsdF9jb3VudCI6IDE1LCAiZm9udF9zaXplIjogMTIsICJ3ZWJfc2VhcmNoIjogdHJ1ZSwgIndpa2lwZWRpYSI6IHRydWUsICJsaXZlX3NlYXJjaCI6IHRydWUsICJnaXRodWJfc2VhcmNoIjogZmFsc2UsICJyZWRkaXRfc2VhcmNoIjogZmFsc2UsICJuZXdzX3NlYXJjaCI6IGZhbHNlLCAiYWRfZmlsdGVyIjogdHJ1ZSwgInNhdmVfbWVtb3J5IjogdHJ1ZSwgInNhdmVfbG9jYWxseSI6IGZhbHNlLCAic2F2ZV9wYXRoIjogIiJ9'
 # NEON_SETTINGS_END
 
 def _decode_store(b64_str):
@@ -30,7 +30,6 @@ def _decode_store(b64_str):
 NEON_HISTORY = _decode_store(NEON_HISTORY_B64)
 NEON_SETTINGS = _decode_store(NEON_SETTINGS_B64)
 
-# Image support via Pillow
 try:
     from PIL import Image, ImageTk, ImageStat
     HAS_PIL = True
@@ -38,118 +37,159 @@ except ImportError:
     HAS_PIL = False
 
 # ============================================================================
-# THINKING BRAIN: N30N C0R3 AI
+# C0R3-X BRAIN: ADVANCED COGNITIVE SYNTHESIS (V5)
 # ============================================================================
 
 class ThinkingBrain:
-    """Dynamic brain that can balance context from none to high depending on query."""
+    """
+    C0R3-X Logic Engine:
+    Uses multi-stage query decomposition, location-aware heuristics,
+    and a recursive synthesis layer to provide high-quality intelligence.
+    """
     def __init__(self, settings=None):
-        self.user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
-        self.blacklist = ["ebay", "amazon", "aliexpress", "walmart", "target", "etsy", "wish", "temu", "alibaba"]
-        self.ad_triggers = ["price", "shipping", "buy now", "discount", "sale", "stock", "cart", "$", "€", "£"]
-        self.last_subject = ""
         self.settings = settings or {}
+        self.user_agents = [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
+        ]
+        self.last_subject = ""
+        self.local_keywords = ["rockingham", "wellard", "perth", "wa", "australia", "near", "nearby", "local"]
+        self.intent_patterns = {
+            "shopping": r"\b(buy|get|shop|store|grocer|price|cost|sale|mall|market)\b",
+            "food": r"\b(restaurant|cafe|eat|drink|food|dinner|lunch|breakfast|takeaway|menu)\b",
+            "howto": r"\b(how to|step|guide|tutorial|way to|fix|repair)\b",
+            "factual": r"\b(what is|who is|define|meaning of|history of|facts about)\b"
+        }
 
     def update_settings(self, settings): self.settings = settings
 
-    def _fetch(self, url, timeout=12):
+    def _fetch(self, url, timeout=15):
         try:
-            req = urllib.request.Request(url, headers={'User-Agent': self.user_agent})
+            req = urllib.request.Request(url, headers={'User-Agent': random.choice(self.user_agents)})
             with urllib.request.urlopen(req, timeout=timeout) as response:
                 return response.read().decode('utf-8', errors='ignore')
         except: return ""
 
-    def _clean(self, text):
-        text = html.unescape(re.sub(r'<.*?>', '', text))
+    def _clean_html(self, text):
+        text = html.unescape(re.sub(r'<[^>]+>', ' ', text))
         return re.sub(r'\s+', ' ', text).strip()
+
+    def _parse_ddg(self, raw_html):
+        """Advanced extraction of titles, snippets, and source names."""
+        results = []
+        blocks = re.findall(r'<div class="result__body">.*?</div>\s*</div>', raw_html, re.DOTALL)
+        for block in blocks:
+            title_match = re.search(r'class="result__a"[^>]*>(.*?)</a>', block, re.DOTALL)
+            snippet_match = re.search(r'class="result__snippet"[^>]*>(.*?)</a>', block, re.DOTALL)
+            url_match = re.search(r'class="result__url"[^>]*>(.*?)</a>', block, re.DOTALL)
+            
+            if title_match and snippet_match:
+                results.append({
+                    "title": self._clean_html(title_match.group(1)),
+                    "snippet": self._clean_html(snippet_match.group(1)),
+                    "source": self._clean_html(url_match.group(1)) if url_match else "Web"
+                })
+        return results
 
     def respond(self, query, history):
         q_low = query.lower().strip()
         
-        # Identity Check
-        if any(k in q_low for k in ["who are you", "your name"]):
-            return "I am N30N C0R3 AI, your advanced local intelligence hub."
+        # 1. IMMEDIATE HEURISTICS
+        if q_low in ["time", "date"]: return f"🕒 {datetime.datetime.now().strftime('%I:%M %p, %A, %B %d, %Y')}"
+        if any(k in q_low for k in ["who are you", "your name"]): return "I am N30N C0R3 AI, powered by the C0R3-X Logic Engine."
 
-        if any(q_low == g or q_low.startswith(g+" ") for g in ["hi", "hello", "hey", "yo", "sup"]):
-            return "N30N C0R3 AI active. Dynamic research mode initialized."
-            
-        if q_low in ["time", "date", "today"]:
-            return f"Synchronized Time: {datetime.datetime.now().strftime('%I:%M %p, %A, %B %d, %Y')}."
+        # 2. INTENT CLASSIFICATION
+        intent = "general"
+        for key, pattern in self.intent_patterns.items():
+            if re.search(pattern, q_low):
+                intent = key
+                break
         
-        # SMART CONTEXT BALANCING
-        search_query = query
-        pronouns = {"it", "that", "this", "he", "she", "they", "them", "these", "those", "his", "her", "its", "their", "him", "hers"}
-        q_words = re.findall(r'\b\w+\b', q_low)
+        is_local = any(loc in q_low for loc in self.local_keywords)
+
+        # 3. CONTEXT SYNTHESIS
+        pronouns = {"it", "they", "them", "there", "here", "its", "those", "these", "that", "him", "her"}
+        words = q_low.split()
+        needs_context = len(words) < 3 or any(w in pronouns for w in words)
         
-        # Only use context for single-word queries or when pronouns are explicitly used.
-        needs_context = len(q_words) < 2 or any(w in pronouns for w in q_words)
-        
+        effective_query = query
         if needs_context and self.last_subject:
-            search_query = f"{self.last_subject} {query}"
+            effective_query = f"{query} {self.last_subject}"
         
-        clean_subject = re.sub(r'\b(what|who|is|are|a|an|the|tell|me|about|define|search|for)\b', '', q_low).strip()
-        if clean_subject and not any(w in pronouns for w in q_words):
-            self.last_subject = clean_subject
+        # Update Subject Tracking
+        clean_sub = re.sub(r'\b(what|where|who|is|are|the|best|good|find|me|search|for|how|to|any|nearby|tell|about)\b', '', q_low).strip()
+        if len(clean_sub) > 3 and not any(w in pronouns for w in words):
+            self.last_subject = clean_sub
 
-        # Safe Math
-        if re.search(r'[\d\+\-\*\/\(\)\^]', query) and any(c in query for c in "+-*/^%"):
+        # 4. MULTI-PATH RESEARCH DATA ACQUISITION
+        research_data = []
+        search_variants = [effective_query]
+        
+        if intent in ["shopping", "food"] or is_local:
+            search_variants.append(f"{effective_query} locations address contact")
+            search_variants.append(f"{effective_query} reviews ratings")
+        elif intent == "howto":
+            search_variants.append(f"{effective_query} step by step instructions")
+        
+        seen_snippets = set()
+        for variant in search_variants[:2]:
+            raw_html = self._fetch(f"https://html.duckduckgo.com/html/?q={urllib.parse.quote(variant)}")
+            scraped = self._parse_ddg(raw_html)
+            for item in scraped:
+                if item["snippet"].lower() not in seen_snippets:
+                    research_data.append(item)
+                    seen_snippets.add(item["snippet"].lower())
+
+        # 5. DATA SCORING & COGNITIVE ANALYSIS
+        scored_results = []
+        query_keywords = set(re.findall(r'\b\w{3,}\b', effective_query.lower()))
+        
+        for item in research_data:
+            score = 0
+            combined_text = (item["title"] + " " + item["snippet"]).lower()
+            for kw in query_keywords:
+                if kw in combined_text: score += 10
+            if is_local and any(loc in combined_text for loc in self.local_keywords):
+                score += 15
+            if any(marker in combined_text for marker in ["st ", "rd ", "ave ", "highway", "mall", "centre", "shop ", "ph:"]):
+                score += 8
+            scored_results.append((score, item))
+        
+        scored_results.sort(key=lambda x: x[0], reverse=True)
+        top_tier = [x[1] for x in scored_results if x[0] > 0]
+
+        # 6. RESPONSE REFINEMENT
+        if not top_tier:
+            return "I couldn't synthesize a definitive answer from current research layers. Please try a more specific query, including a suburb or detailed topic."
+
+        final_output = f"⚡ **C0R3-X COGNITIVE REPORT: {self.last_subject.upper()}**\n"
+        locations = [i for i in top_tier if any(k in (i["title"] + i["snippet"]).lower() for k in ["st ", "rd ", "ave ", "open", "address", "phone", "located", "ph:"])]
+        factual = [i for i in top_tier if i not in locations]
+
+        if (intent in ["shopping", "food"] or is_local) and locations:
+            final_output += "\n📍 **VERIFIED LOCATIONS & ENTITIES:**\n"
+            for loc in locations[:6]:
+                addr_match = re.search(r'\d+ [A-Za-z]+ (?:St|Rd|Ave|Hwy|Way|Pde|Cct)', loc["snippet"])
+                addr = f" - {addr_match.group(0)}" if addr_match else ""
+                final_output += f"• **{loc['title']}**{addr}\n  _{loc['snippet']}_\n"
+
+        if factual:
+            final_output += "\n🔍 **RESEARCH SYNTHESIS:**\n"
+            for fact in factual[:6]:
+                final_output += f"• {fact['snippet']}\n"
+
+        if re.search(r'[\d\+\-\*\/\(\)\^]', query) and any(c in query for c in "+-*/"):
             try:
                 expr = query.replace("^", "**")
-                clean = re.sub(r'[^0-9\+\-\*\/\(\)\.\%\s\*\^a-zA-Z]', '', expr)
-                return f"🔢 Computational Result: {eval(clean, {'__builtins__': None}, {k: getattr(math, k) for k in dir(math) if not k.startswith('_')})}"
+                clean_expr = re.sub(r'[^0-9\+\-\*\/\(\)\.\%\s\*\^a-zA-Z]', '', expr)
+                math_val = eval(clean_expr, {'__builtins__': None}, {k: getattr(math, k) for k in dir(math) if not k.startswith('_')})
+                final_output = f"🔢 **CALCULATION:** {math_val}\n\n" + final_output
             except: pass
 
-        results = []
-        wiki_search_term = re.sub(r'\b(what|who|is|are|a|an|the|tell|me|about|define|where|was|were|search|for)\b', '', search_query.lower()).strip()
-        
-        encoded_web = urllib.parse.quote(search_query)
-        encoded_wiki = urllib.parse.quote(wiki_search_term.replace(' ', '_'))
-        
-        if self.settings.get("live_search") and any(k in q_low for k in ["closing", "opening", "hours", "open", "close"]):
-            try:
-                html_hours = self._fetch(f"https://www.google.com/search?q={encoded_web}+hours")
-                times = re.findall(r'\d{1,2}:\d{2}\s?[apAP][mM]', html_hours)
-                if times: results.append(("Live Hours", f"Found these times: {', '.join(set(times))}. (Verify with Google Maps)."))
-            except: pass
-
-        if self.settings.get("wikipedia", True):
-            try:
-                wiki_sum = json.loads(self._fetch(f"https://en.wikipedia.org/api/rest_v1/page/summary/{encoded_wiki}"))
-                if wiki_sum.get("extract"): results.append(("Encyclopedia", wiki_sum["extract"]))
-            except: pass
-
-        if self.settings.get("web_search", True):
-            try:
-                html_data = self._fetch(f"https://html.duckduckgo.com/html/?q={encoded_web}")
-                blocks = re.findall(r'<div class="result__body">(.*?)</div>\s*</div>', html_data, re.DOTALL)
-                web_intel = []
-                for block in blocks:
-                    url_m = re.search(r'href="(.*?)"', block)
-                    snippet_m = re.search(r'<a class="result__snippet".*?>(.*?)</a>', block, re.DOTALL)
-                    if url_m and snippet_m:
-                        url, snippet = url_m.group(1).lower(), self._clean(snippet_m.group(1))
-                        if self.settings.get("ad_filter", True):
-                            if any(s in url for s in self.blacklist) or any(t in snippet.lower() for t in self.ad_triggers):
-                                if not any(k in q_low for k in ["buy", "shop", "price"]): continue
-                        if len(snippet) > 30: web_intel.append(snippet)
-                if web_intel: results.append(("Web Intelligence", web_intel[:int(self.settings.get("result_count", 5))]))
-            except: pass
-
-        if not results: return "I attempted to research that across all global layers but found no definitive data. Try rephrasing?"
-
-        final_resp = ""
-        for tag, content in results:
-            if isinstance(content, list):
-                final_resp += f"\n🌐 **{tag}:**\n"
-                for s in content:
-                    if any(k in s.lower() for k in ['def ', 'function', 'class ', 'void ', 'public static']): final_resp += f"```\n{s}\n```\n"
-                    else: final_resp += f"• {s}\n"
-            else: final_resp += f"💡 **{tag}:**\n{content}\n\n"
-        
-        return final_resp.strip()
+        return final_output.strip()
 
 # ============================================================================
-# STORAGE SYSTEMS
+# INFRASTRUCTURE (Storage, Settings, UI)
 # ============================================================================
 
 class MemoryDatabase:
@@ -269,7 +309,7 @@ class NeonUI:
             "intelligence": tk.StringVar(value=str(self.settings.get("intelligence", "Balanced"))),
             "response_style": tk.StringVar(value=str(self.settings.get("response_style", "Balanced"))),
             "speed": tk.StringVar(value=str(self.settings.get("speed", "Normal"))),
-            "result_count": tk.StringVar(value=str(self.settings.get("result_count", 5))),
+            "result_count": tk.StringVar(value=str(self.settings.get("result_count", 15))),
             "font_size": tk.StringVar(value=str(self.settings.get("font_size", 12))),
             "web_search": tk.BooleanVar(value=_get_val("web_search", True)),
             "wikipedia": tk.BooleanVar(value=_get_val("wikipedia", True)),
